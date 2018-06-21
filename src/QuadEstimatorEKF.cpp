@@ -312,6 +312,15 @@ void QuadEstimatorEKF::UpdateFromGPS(V3F pos, V3F vel)
   //  - this is a very simple update
   ////////////////////////////// BEGIN STUDENT CODE ///////////////////////////
 
+  hPrime << 1, 0, 0, 0, 0, 0, 0,
+            0, 1, 0, 0, 0, 0, 0,
+            0, 0, 1, 0, 0, 0, 0,
+            0, 0, 0, 1, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 0,
+            0, 0, 0, 0, 0, 1, 0;
+  
+  zFromX = hPrime * ekfState;
+  
   /////////////////////////////// END STUDENT CODE ////////////////////////////
 
   Update(z, hPrime, R_GPS, zFromX);

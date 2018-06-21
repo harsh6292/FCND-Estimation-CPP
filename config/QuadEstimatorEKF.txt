@@ -6,9 +6,9 @@ InitStdDevs = .1, .1, .3, .1, .1, .3, .05
 # note that the process covariance matrix is diag(pow(QStd,2))*dtIMU
 
 QPosXYStd = 0.14
-QPosZStd = .05
+QPosZStd = .08
 QVelXYStd = .18
-QVelZStd = .1
+QVelZStd = .12
 QYawStd = .1
 
 # GPS measurement std deviations
