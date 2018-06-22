@@ -166,25 +166,25 @@ VectorXf QuadEstimatorEKF::PredictState(VectorXf curState, float dt, V3F accel, 
   ////////////////////////////// BEGIN STUDENT CODE ///////////////////////////
 
   // Update x_t
-  predictedState(0) += predictedState(3)*dt;
+  predictedState(0) = curState(0) + curState(3)*dt;
   
   // Update y_t
-  predictedState(1) += predictedState(4)*dt;
+  predictedState(1) = curState(1) + curState(4)*dt;
   
   // Update z_t
-  predictedState(2) += predictedState(5)*dt;
+  predictedState(2) = curState(2) + curState(5)*dt;
 
   // Convert body rate to global frame
   V3F accel_intertial = attitude.Rotate_BtoI(accel);
   
   // Update x_t_dot
-  predictedState(3) += accel_intertial[0]*dt;
+  predictedState(3) = curState(3) + accel_intertial[0]*dt;
   
   // Update y_t_dot
-  predictedState(4) += accel_intertial[1]*dt;
+  predictedState(4) = curState(4) + accel_intertial[1]*dt;
   
   // Update z_t_dot
-  predictedState(5) += (accel_intertial[2] - CONST_GRAVITY)*dt;
+  predictedState(5) = curState(5) + (accel_intertial[2] - CONST_GRAVITY)*dt;
   
   /////////////////////////////// END STUDENT CODE ////////////////////////////
 
